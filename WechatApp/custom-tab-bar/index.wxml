@@ -1,0 +1,35 @@
+<view class="cu-bar tabbar margin-bottom-xl" bindtap="switchTab">
+  <view class="action  {{selected == 0 ? 'text-orange': 'text-gray'}}" data-index="0" >
+    <view class="cuIcon-home"></view> 跑腿
+  </view>
+  <view class="action {{selected == 1 ? 'text-orange': 'text-gray'}}" data-index="1">
+    <view class="cuIcon-friendfavor"></view> 关注
+  </view>
+  <view class="issue action add-action text-gray {{issueHidden?'':'active'}}" bindtap="issue">
+    <button class="cu-btn cuIcon-add bg-orange shadow "></button>
+    <text hidden="{{!issueHidden}}">发布</text>
+  </view>
+  <view class="action {{selected == 2 ? 'text-orange': 'text-gray'}}" data-index="2">
+    <view class="cuIcon-new">
+      <view class="cu-tag badge" wx:if="{{newsCount > 0}}">{{newsCount}}</view>
+    </view>
+    消息
+  </view>
+  <view class="action {{selected == 3 ? 'text-orange': 'text-gray'}}" data-index="3">
+    <view class="cuIcon-my">
+    </view>
+    我的
+  </view>
+</view>
+<view class="category {{issueHidden? '': 'active'}}" hidden="{{issueHidden}}">
+<view class="background"></view>
+<view class="category-card cu-list grid col-2 no-border}}">
+  <view class="cu-item" wx:for="{{iconList}}" wx:key="index" 
+  bindtap="toIssue" data-id = "{{item.id}}"
+  >
+    <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+    </view>
+    <text>{{item.name}}</text>
+  </view>
+</view>
+</view>

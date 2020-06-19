@@ -1,0 +1,58 @@
+<view class="cu-custom">
+
+<cu-custom isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发布任务</view>
+</cu-custom>
+</view>
+<back url="{{backUrl}}"/>
+<scroll-view scroll-y class="scroll-view">
+<view class='taskForm  margin-top'>
+  <view class='c-o-c1'>
+    <view class='marginAuto conmit-option-card-son underline'>
+      <view class='fontb'>标题</view>
+      <view>
+        <input placeholder='title' bindblur='bindblur' data-prop='title' maxlength='16' placeholder-class="placeholder"></input>
+      </view>
+    </view>
+    <view class='marginAuto conmit-option-card-son underline'>
+      <view class='fontb'>赏金</view>
+      <view class='flex'>
+        <view>
+          <input placeholder='rewardMoney' type='number' bindblur='bindblur' data-prop='rewardMoney' maxlength='16' value="{{rewardMoney}}"
+          placeholder-class="placeholder"></input>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group align-start">
+      <view class="title fontb">内容</view>
+      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindblur='bindblur' data-prop='content'  placeholder="content" placeholder-class="placeholder"></textarea>
+    </view>
+  </view>
+  <view class='c-o-c1'>
+    <block wx:for="{{taskForm.wechatOptions}}" wx:key="index">
+      <view class="marginAuto conmit-option-card-son underline" wx:if="{{item.type == 'TEXT'}}">
+        <view class='fontb'>{{item.info}}</view>
+        <view class='flex'>
+          <view>
+            <input placeholder='{{item.name}}' bindblur='bindblur' maxlength='16' bind:blur="blur" data-name="{{item.name}}"
+            placeholder-class="placeholder"></input>
+          </view>
+        </view>
+      </view>
+      <view class="images" wx:if="{{item.type == 'IMAGES'}}" data-name="{{item.name}}">
+        <view class="info">图片资料(最多5张)：</view>
+        <van-uploader max-count="5" bind:delete="deleteImg" file-list="{{ fileList }}" bind:after-read="afterRead" data-name="{{item.name}}" />
+      </view>
+    </block>
+  </view>
+</view>
+
+</scroll-view>
+
+  <view class="submit-button">
+
+    <button class='addr-btn bg-gradual-orange' disabled="{{loading}}" bindtap="issueTask" >
+      <text class="cuIcon-loading2 iconfont-spin" wx:if="{{loading}}"></text> 发布
+    </button>
+  </view>

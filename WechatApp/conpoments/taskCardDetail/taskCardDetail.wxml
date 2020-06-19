@@ -1,0 +1,125 @@
+
+  <wxs module="filter" src="../../utils/filter.wxs"/>
+<view class="taskCard">
+  <!-- <scroll-view scroll-y="true"> -->
+    <view class="top">
+      <view class="title">
+        {{taskDetail.title}}
+      </view>
+      <view class="createTime">
+        <text>created:</text> {{taskDetail.createTime}}
+      </view>
+    </view>
+    <view class="center">
+      <view class="options">
+        <view>
+          <text>发起人:</text> {{fromUser.user.name || ''}}</view>
+        <view>
+          <text>接单用户:</text> {{toUser.user.name || ''}}</view>
+        <view>
+          <text>任务类型:</text> {{taskDetail.category.info}}</view>
+      </view>
+      <view class="content">
+        <text>内容:</text> {{taskDetail.content || ''}}
+      </view>
+      <view class="reward">
+        <text>reward:</text> {{taskDetail.rewardMoney?"￥"+taskDetail.rewardMoney : "无赏金"}}
+      </view>
+    </view>
+    <view class="taskStatus">
+      <view class="title">任务状态:</view>
+      <view>
+        <van-steps steps="{{ setting.steps }}" active="{{ setting.active }}" active-icon="{{setting.icon}}" inactive-icon="{{setting.icon}}" active-color="{{setting.color}}" inactive-color="#eee" />
+      </view>
+    </view>
+    <view class="foot-options">
+      <block wx:for="{{taskDetail.wechatOptions}}" wx:key="index">
+        <view class="text" wx:if="{{item.type == 'TEXT'}}">
+          <view class="info">
+            {{item.info}}:
+          </view>
+          <view class="value">
+            {{item.value}}
+          </view>
+        </view>
+      </block>
+    </view>
+    <view>
+      <view class="images">
+        <view class="info">
+          {{taskDetail.imgInfo.info}}
+        </view>
+
+        <view class="value" wx:if="{{taskDetail.imgInfo.value}}">
+          <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-active-color="">
+            <swiper-item wx:for="{{taskDetail.imgInfo.value}}" wx:key="index" data-imgs="{{taskDetail.imgInfo.value}}" bindtap="showImg" data-index="{{index}}">
+                <view class="swiper-item">
+                  <image mode="aspectFill" src="{{item}}"></image>
+                </view>
+            </swiper-item>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar solid-bottom">
+      <view class="action">
+        <text class="cuIcon-titles text-orange"></text> 回复区
+      </view>
+    </view>
+    <view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item" wx:for="{{replyList}}" wx:key="index">
+        <view class="cu-avatar round" style="background-image:url({{filter.avatarDeal(item.fromUser.avatar, root)}});"></view>
+        <view class="content">
+        <!-- 顶层的item.toUserId 为0代表没有采纳 有值代表被采纳了-->
+        <view class="action cai_na" wx:if="{{taskDetail.category.type == 'question' && item.toReplyId == 0}}">
+          <button class="cu-btn bg-green shadow-blur"
+          wx:if="{{taskDetail.fromUserId == setting.curUserId && taskDetail.status != 'COMPLETE'}}"
+          data-toUser="{{item.fromUser.user.id}}"
+          data-task="{{taskDetail.id}}"
+          data-reply="{{item.id}}"
+          bindtap="caina"
+          >采纳</button>
+          <!-- 任务完成 第一个即为被采纳的 -->
+          <button class="cu-btn bg-green}}"
+           wx:if="{{taskDetail.status == 'COMPLETE' && index == 0}}"
+          >已采纳</button>
+        </view>
+          <view class="text-orange">{{item.fromUser.name}}</view>
+          <view class="text-white text-content text-df">
+            {{item.content}}
+          </view>
+          <scroll-view scroll-y  wx:if="{{item.childs && item.childs.length > 0}}"style="height:{{item.childs.length * 50 > 150? 150 : item.childs.length * 50}}px">
+          <view wx:for="{{item.childs}}" wx:key="index" data-user="{{child.fromUser.user.id}}" wx:for-item="child" data-reply="{{item.id}}"
+          data-replyuser="{{child.fromUser.name}}"
+          data-avatar="{{filter.avatarDeal(child.fromUser.avatar,root)}}"
+           bindtap="showReply" class="bg-grey padding-sm radius margin-top-sm  text-sm">
+            <view class="flex">
+              <view class="text-orange">{{child.fromUser.name}}</view>
+              <view  wx:if="{{child.toUser && child.toUser.user.id != child.fromUser.user.id}}">@{{child.toUser.name}}</view>
+              <view class="flex-sub">：{{child.content}}</view>
+            </view>
+          </view>
+          </scroll-view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-grey text-df " style="font-size:24rpx">{{item.createdTime}}</view>
+            <view bindtap="showReply" 
+            data-avatar="{{filter.avatarDeal(item.fromUser.avatar,root)}}"
+            data-user="{{item.fromUser.user.id}}" data-reply="{{item.id}}">
+              <text class="cuIcon-messagefill text-white margin-left-sm "></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  <!-- </scroll-view> -->
+  <view class="button buttonSubmit {{(taskDetail.category.type == 'question' || setting.buttonInfo && setting.buttonInfo[0].hidden) || (taskDetail.fromUserId != setting.curUserId && taskDetail.category.type == 'question')?'':'show' }}">
+    <block wx:for="{{setting.buttonInfo}}" wx:key="index">
+      <button class="cu-btn padding radius text-center shadow-blur {{item.afterStatus == 'CANCELED' || item.afterStatus == 'REQ_CANCEL' || item.afterStatus == 'serious' ? 'bg-grey cancel':'bg-gradual-orange'}}" data-class="slide-right" role="button" bindtap="resolveIssue" data-status="{{item.afterStatus}}"
+        data-name="{{item.name}}" aria-disabled="false">{{item.name}}</button>
+    </block>
+  </view>
+  <button class="cu-btn  padding radius text-center replay" data-class="slide-right" role="button" bindtap="showReply" 
+  data-replyuser="任务发起人"
+  data-avatar="{{filter.avatarDeal(fromUser.avatar, root)}}"
+  data-reply="{{0}}" data-user="{{0}}">回复</button>
+</view>

@@ -1,0 +1,31 @@
+<view class="cu-custom">
+	<cu-custom>
+		<view slot="content">消息通知</view>
+	</cu-custom>
+</view>
+<back url="{{backUrl}}" />
+<view class="cu-bar solid-bottom margin-top">
+	<view class="action">
+		<text class="cuIcon-title text-orange "></text> 消息列表
+	</view>
+</view>
+<wxs module="filter" src="../../utils/filter.wxs"/>
+<view class="cu-list menu-avatar">
+	<view class="cu-item bg-black-normal" wx:for="{{news}}" wx:key="index"
+	bindtap="toChat" data-id="{{item.fromUserId}}"
+	>
+		<view class="cu-avatar round lg" style="background-image:url({{item.fromUserId != 0 && item.fromUser && filter.avatarDeal(item.fromUser.avatar, root) || root + '/uploads/systemImg'}});"></view>
+		<view class="content">
+			<view class="text-white">{{item.fromUserId != 0 && item.fromUser && item.fromUser.name || "系统消息"}}</view>
+			<view class=" {{item.isRead?'text-grey': 'text-orange'}} text-sm flex">
+				<text class="text-cut">
+							<text class="cuIcon-infofill  margin-right-xs"></text>{{item.content.msg}}
+				</text>
+			</view>
+		</view>
+		<view class="action">
+			<view class="text-white text-xs">{{item.createdTime}}</view>
+			<view class="cu-tag round bg-orange sm" wx:if="{{!item.isRead}}">{{item.noReadCount}}</view>
+		</view>
+	</view>
+</view>

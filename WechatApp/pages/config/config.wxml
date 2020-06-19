@@ -1,0 +1,89 @@
+
+<view class="cu-custom">
+<cu-custom  isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">设置</view>
+</cu-custom>
+</view>
+<back url="{{backUrl}}"/>
+<scroll-view scroll-y class="scroll-view">
+  <view class='taskForm  margin-top'>
+    <view class='c-o-c1'>
+      <view class='marginAuto conmit-option-card-son underline'>
+        <view class='fontb'>学校</view>
+        <view>
+          <input placeholder='{{userDetail.school}}' bindblur='bindblur' data-prop='school' maxlength='16' placeholder-class="placeholder"></input>
+        </view>
+      </view>
+      <view class='marginAuto conmit-option-card-son underline'>
+        <view class='fontb' >手机</view>
+        <view>
+          <input placeholder='{{userDetail.phone}}' bindblur='bindblur' data-prop='phone' maxlength='16' placeholder-class="placeholder"></input>
+        </view>
+      </view>
+      <view class='marginAuto conmit-option-card-son underline'>
+        <view class='fontb' placeholder-class="placeholder">签名</view>
+        <view>
+          <input placeholder='{{userDetail.motto}}' bindblur='bindblur' data-prop='motto' maxlength='16'placeholder-class="placeholder"></input>
+        </view>
+      </view>
+      <view class='marginAuto conmit-option-card-son underline'>
+        <view class='fontb' >生日</view>
+        <view bindtap="setBirthday">
+          <input placeholder='{{userDetail.birthday}}' disabled data-prop='birthday' maxlength='16' value="{{userDetail.birthday}}" placeholder-class="placeholder"></input>
+        </view>
+      </view>
+      <view class='marginAuto conmit-option-card-son underline' style="justify-content: space-between;">
+        <view class='text-white' >余额: <text class="text-orange">￥{{nativeAccount / 100}} </text></view>
+        <view class="cu-btn bg-red text-align shadow" bindtap="showModal">充值</view>
+      </view>
+    </view>
+    <view class='c-o-c1'>
+      <view class="images">
+        <view class="info">背景图片：</view>
+        <van-uploader max-count="1" bind:delete="deleteImg" file-list="{{ backgroundImage }}" bind:after-read="afterRead" data-prop="backgroundImage" />
+      </view>
+    </view>
+    <view class='c-o-c1'>
+      <view class="images">
+        <view class="info">头像</view>
+        <van-uploader max-count="1" bind:delete="deleteImg" file-list="{{ avatar }}" bind:after-read="afterRead" data-prop="avatar" />
+      </view>
+    </view>
+  </view>
+
+</scroll-view>
+
+<view class="submit-button">
+
+  <button class='addr-btn bg-gradual-orange' bindtap="submit">
+    <text class="cuIcon-loading2 iconfont-spin" wx:if="{{loading}}"></text> 确认设置
+  </button>
+</view>
+<view class="date" hidden="{{dateHidden}}">
+
+<van-datetime-picker
+  
+  type="date"
+  formatter = "{{formatter}}"
+  value="{{ currentDate }}"
+  max-date="{{ now }}"
+  bind:confirm="dataConfirm"
+  bind:cancel="cancel"
+/>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="cu-bar">
+      <view class="action text-gray" bindtap="hideModal">取消</view>
+      <view class="action text-blue" bindtap="hideModal" data-check="{{true}}">确定</view>
+    </view>
+    <view class="grid col-3 padding-sm">
+      <view wx:for="{{checkbox}}" class="padding-xs" wx:key="index">
+        <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

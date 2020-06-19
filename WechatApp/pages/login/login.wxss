@@ -1,0 +1,184 @@
+.container{
+  position: absolute;
+  bottom: 15vh;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+canvas{
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom
+  ,#a5673f,#1cbbb4);
+  background: #000;
+  background: linear-gradient(to bottom
+  ,#a5673f,#000);
+  background: linear-gradient(to bottom
+  ,#1cbbb4,#0081ff);
+
+  opacity: 11;
+}
+button{
+  position: relative;
+  border:none;
+  background: #ffffff00;
+  color: #fff;
+  box-shadow: 1px 1px 4px #ffffff99;
+}
+.normal_login{
+  margin-top: 20px;
+  color: #fff;
+}
+.formSubmit{
+
+}
+.form{
+  position: absolute;
+  left: 10vw;
+  top:-70vh;
+  width: 80vw;
+  border-radius: 5px;
+  /* perspective: 500px; */
+  box-shadow: 1px 1px 4px #ffffff99;
+  color: #fff;
+  opacity: 0.3;
+  transition: all .4s linear;
+  animation: myfirst2 .4s;
+}
+@keyframes myfirst
+{
+from {
+  transform: rotateY(0);
+}
+to {
+  transform: rotateY(360deg);
+}
+}
+@keyframes myfirst2
+{
+from {
+  transform: rotateY(360deg);
+}
+to {
+  transform: rotateY(0);
+}
+}
+.form.show{
+  position: absolute;
+  opacity: 1;
+  top:20vh;
+}
+.form.active{
+  /* transform: rotateY(360deg); */
+  animation: myfirst .4s;
+}
+.decorate{
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.form::after{
+  position: absolute;
+  /* left: 38vw;
+  top:-16vw; */
+  right: 2vw;
+  top:2vw;
+  content: "";
+  width:4vw;
+  height: 4vw;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 6px #fff;
+  z-index: 8;
+}
+/* .form::before{
+  position: absolute;
+  left: 39vw;
+  top:-14vw;
+  content: ".";
+  width:2vw;
+  height: 14vw;
+  background: #ffffff55;
+  z-index: 7;
+} */
+.form-container{
+  padding: 0 40rpx;
+  font-size: 32rpx;
+}
+
+.form-container:first-child{
+  margin-top: 30px;
+}
+.form-container .section{
+  display: flex;
+  padding-bottom: 50rpx;
+}
+.form-container .section .section__title{
+  width: 4em;
+  text-align:justify; 
+  text-justify:inter-word;
+}
+.form input{
+  border-radius: 5px;
+  line-height: 1.5em;
+  box-shadow: inset -1px -1px 2px #fff;
+  min-height: 56rpx;
+  padding: 0 20rpx;
+  color: #eee;
+  overflow: hidden;
+}
+.form input::placeholder{
+  color: #fff;
+}
+.form-title{
+  padding: 20rpx 0 ;
+  text-align: center;
+  font-weight: bold;
+  font-size: 44rpx;
+}
+.register{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.register .section{
+  position: relative;
+  padding: 20rpx;
+  padding-bottom: 30rpx;
+}
+.register text{
+  font-size: 48rpx;
+}
+.register button{
+  margin: 0;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+}
+.register button text{
+  font-size: 24rpx;
+}
+.form-title, .register text{
+  backface-visibility: hidden;
+  transition: all .4s ease;
+}

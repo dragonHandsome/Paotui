@@ -1,0 +1,23 @@
+<view class="taskCard" data-id = "{{task.id}}" bindtap="onTap">
+  <view class="top">
+    <view class="title">
+      {{task.title}}
+    </view>
+    <view class="createTime">
+      <text>时间:</text> {{task.createTime}}
+    </view>
+  </view>
+  <view class="center">
+    <view class="options">
+      <view><text>接单用户:</text> {{task.toUserName || ''}}</view>
+      <view><text>任务类型:</text> {{task.categoryName || ''}}</view>
+      <view><text>任务状态:</text> {{task.status}}</view>
+    </view>
+    <view class="content">
+      <text>内容:</text>{{task.content || ''}}
+    </view>
+    <view class="reward">
+      <text>报酬:</text> {{task.rewardMoney?"￥"+task.rewardMoney / 100 : "无赏金"}}
+    </view>
+  </view>
+</view>

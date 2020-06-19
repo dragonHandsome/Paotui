@@ -1,0 +1,54 @@
+.rate{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 35px;
+  width: 150px;
+  z-index: 99;
+  color: #eee;
+}
+.rate image{
+  position: absolute;
+  top:-60px;
+  left: -40px;
+  scale: 1.3;
+  animation: rate infinite 2s;
+}
+.rate .check{
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 200rpx; 
+  width: 80rpx;
+  height: 80rpx;
+  font-size: 80rpx;
+  z-index: 99;
+}
+.bg-back{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000000AA;
+  z-index: 9;
+}
+.makeRate{
+  display: none;
+}
+.makeRate.active{
+  display: block;
+}
+.cu-bar.input.send{
+  position: fixed;
+  transition: all .3s;
+  bottom: -100rpx;
+  width: 100%;
+}
+.cu-bar.input.send.active{
+  bottom: 0;
+}

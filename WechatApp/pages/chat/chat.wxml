@@ -1,0 +1,52 @@
+<view class="cu-custom">
+	<cu-custom isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">消息</view>
+	</cu-custom>
+</view>
+<back url="{{backUrl}}" />
+<wxs module="filter" src="../../utils/filter.wxs" />
+<view class="cu-chat">
+  <scroll-view scroll-y style="height:90vh" scroll-into-view="{{'s'+userNotifies[userNotifies.length - 1].id}}" >
+    
+  <view class="cu-item {{item.isCurUser?'self':''}}" wx:for="{{userNotifies}}" wx:key="index" id="{{'s'+item.id}}">
+    <view class="main-content cu-item {{item.isCurUser?'self':''}}">
+      <view class="cu-avatar radius" style="background-image:url({{item.fromUserId != 0 && item.fromUser && filter.avatarDeal(item.fromUser.avatar, root) || root + '/uploads/systemImg'}});"></view>
+    <view class="main">
+      <view class="content {{item.isCurUser?'bg-green':''}} shadow">
+        <text>{{item.content.msg}}</text>
+        <view class="button" wx:if="{{item.content.taskId}}" 
+        data-userid="{{item.content.userId}}"
+        data-issystem="{{item.fromUserId == 0}}"
+        data-notifyid="{{item.id}}"
+        data-taskid="{{item.content.taskId}}" bindtap="dealWasIssueTask">
+          <button class="toTaskDetail cu-btn sm bg-cyan" data-id="{{item.content.taskId}}" catchtap="toTaskDetail">查看详情</button>
+          <button wx:if="{{!item.isRead && item.action == 'was_issued'}}" class="cu-btn  bg-grey sm " aria-disabled="{{false}}" data-istaken="{{false}}">拒绝</button>
+          <button wx:if="{{!item.isRead && item.action == 'was_issued'}}" class="cu-btn  bg-orange sm shadow" data-istaken="{{true}}">接受</button>
+        </view>
+      </view>
+      <view class="date {{item.content.taskId ?'special':''}}">{{item.createdTime}}</view>
+    </view>
+    
+    </view>
+  </view>
+  </scroll-view>
+</view>
+
+<view  wx:if="{{userNotifies[0].fromUserId != 0 || true}}" class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <view class="">
+    <view class="cu-avatar round" style="background-image:url(https://image.weilanwl.com/img/square-3.jpg);"></view>
+  
+  </view>
+  <input class="solid-bottom" bindfocus="InputFocus" 
+  bindconfirm = "chat"
+  value="{{content}}"
+  bindinput="inputChange"
+  bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  
+  <button class="cu-btn bg-green shadow" bindtap="chat">发送</button>
+</view>
+<van-dialog
+  id="van-dialog"
+  confirm-button-color="#f37b1d"
+  />

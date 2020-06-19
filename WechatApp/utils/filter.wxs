@@ -1,0 +1,21 @@
+function dealDate(date){
+  return date && date.replace("T"," ").split(".")[0];
+}
+function avatarDeal(avatar = "", root){
+  if(avatar.indexOf('http') == -1) {
+    if(avatar.indexOf('{root}') != -1) {
+      avatar = avatar.replace("{root}", root);
+    } else {
+      return root + avatar;
+    }
+  }
+  return avatar;
+}
+function getTime(date){
+  return date.split(" ")[1]
+}
+module.exports = {
+  dealDate: dealDate,
+  avatarDeal: avatarDeal,
+  getTime: getTime
+}

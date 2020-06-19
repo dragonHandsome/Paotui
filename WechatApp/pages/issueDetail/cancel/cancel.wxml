@@ -1,0 +1,33 @@
+<view class="cu-custom">
+	<cu-custom isBack="{{true}}">
+		<view slot="backText">返回</view>
+		<view slot="content">申请取消任务</view>
+	</cu-custom>
+</view>
+<back url="{{backUrl}}" />
+<scroll-view scroll-y class="scroll-view">
+	<view class='taskForm  margin-top'>
+		<view class='c-o-c1'>
+			<view class='marginAuto underline flex'>
+				<view class='text-white title'>填写原因</view>
+			</view>
+		</view>
+    <view class="input">
+      <textarea placeholder='写明为何取消' bindinput="bindInput" bindblur='bindblur' data-prop='content' placeholder-class="placeholder"></textarea>
+    </view>
+		<view class='c-o-c1'>
+			<view class="images">
+				<view class="marginAuto text-white title" style="margin-bottom: 20rpx">图片凭据(最多3张):</view>
+				<van-uploader max-count="3" bind:delete="deleteImg" file-list="{{ fileList }}" bind:after-read="afterRead" data-prop="backgroundImage" />
+			</view>
+		</view>
+	</view>
+
+</scroll-view>
+
+<view class="submit-button">
+
+	<button class='addr-btn bg-gradual-orange' bindtap="submit">
+		<text class="cuIcon-loading2 iconfont-spin" wx:if="{{loading}}"></text> 申请取消
+	</button>
+</view>

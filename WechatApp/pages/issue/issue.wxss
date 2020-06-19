@@ -1,0 +1,78 @@
+
+.scroll-view{
+  height: calc(90vh - 50px);
+}
+.taskForm textarea{
+  padding: 20rpx 0;
+  min-height: 50px;
+  color:#eee;
+}
+.cu-form-group{
+  background: #00000000!important;
+}
+.images{
+  padding: 30rpx;
+}
+.images .info{
+  margin-bottom: 30rpx;
+  color: #f37b1d;
+}
+
+
+page{
+  font-size: 26rpx;
+}
+.marginAuto{
+  width: 684rpx;
+  margin:0 auto;
+  height: 100%;
+}
+.conmit-option-card-son{
+  height: 90rpx;
+  box-sizing: content-box;
+  display: -webkit-flex;
+  display: flex;
+  line-height: 90rpx;
+  align-items: center;
+}
+.conmit-option-card-son > .flex view:first-child{
+  margin-right: 28rpx;
+}
+.c-o-c1{
+  border-bottom: 10rpx solid #00000010;
+}
+.underline{
+  border-bottom:1rpx solid #00000010;
+}
+.fontb{
+  width: 144rpx;
+  padding: 0 10rpx;
+  overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.conmit-option-card-son .have{
+  justify-content: space-between;
+  width: 540rpx;
+}
+.submit-button{
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.addr-btn{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  width: 684rpx;
+  font-size: 26rpx;
+  border-radius: 0;
+}
+.c-o-c1 input{
+  width: 500rpx;
+  color:#eee;
+}
+.placeholder{
+  color: #eee;
+}

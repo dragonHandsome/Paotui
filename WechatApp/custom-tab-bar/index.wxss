@@ -1,0 +1,73 @@
+@import "../colorui/app.wxss";
+.bg-orange{
+  background-color: #f37b1d;
+  color: #ffffff;
+}
+.text-gray, .line-gray, .lines-gray {
+  color: #eeeeee;
+}
+.text-orange{
+  color: #f37b1d;
+}
+.bg-white{
+  background-color: #ffffff;
+color: #666666;
+
+}
+.cu-tag.badge{
+  color: #ffffff;
+}
+.action view{
+  user-select: none;
+  pointer-events: none;
+}
+.issue.action.add-action {
+  background-color: #ffffff00!important;
+}
+.issue.action.add-action.active{
+  transition: 0.3s all;
+  margin-top: -20px;
+  transform: rotate(45deg);
+}
+.issue.action.add-action.active button{
+  background-color: #00000050;
+  color: #ffffff;
+}
+.category{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.category .background{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.8;
+}
+.category-card{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 120px;
+  z-index: 10;
+}
+.text-red{
+  color: #e54d42;
+}
+.text-yellow{
+  color: #fbbd08;
+}
+.text-olive{
+  color: #8dc63f;
+}
+.text-cyan{
+  color: #1cbbb4;
+}
+.cu-list.grid>.cu-item text{
+  color: #eee;
+}

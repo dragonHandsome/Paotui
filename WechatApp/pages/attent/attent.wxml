@@ -1,0 +1,25 @@
+<view class="cu-custom">
+<cu-custom >
+  <view slot="content">关注列表</view>
+</cu-custom>
+</view>
+<back url="{{backUrl}}"/>
+<view class="cu-bar solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 左滑发布任务
+    </view>
+  </view>
+  <view class="cu-list menu-avatar">
+    <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{likeUserList}}" wx:key="index" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
+      <view class="cu-avatar round lg" 
+      bindtap="toUserDetail" data-id="{{item.user.id}}"
+      style="background-image:url({{(item.userDetail.avatar ? root + item.userDetail.avatar : '') || item.user.avatarUrl}});"></view>
+      <view class="content" bindtap="tochat" data-id="{{item.user.id}}">
+        <view class="text-white">{{item.user.name}}</view>
+        <view class="text-white text-sm"><text class="text-orange">个签:</text> {{item.userDetail.motto || '用户还未发表签名~'}}</view>
+      </view>
+      <view class="move">
+        <view class="bg-orange" bindtap="toIssueTask" data-id="{{item.user.id}}">发布任务</view>
+      </view>
+    </view>
+  </view>

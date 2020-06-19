@@ -1,0 +1,36 @@
+<cu-custom  isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">查看TA</view>
+</cu-custom>
+<back url="{{backUrl}}" />
+<view class="container">
+  <view class="header">
+    <view class="info">
+      <view class="image shadow-blur bg-img" style="background-image:url({{(userDetail.avatar ?root + userDetail.avatar : '') || user.avatarUrl}})">
+      </view>
+      <view class="name">{{user.nickName || user.username}}</view>
+    </view>
+    <view class="motto {{isLike || isCurUser? 'active':''}}">
+      <view class="downLoad" bindtap="downLoad"><text class="cuIcon-down lg"></text></view>
+      <view>
+        <text class="text-orange">个签: </text>{{userDetail.motto || "用户还未签名~"}}</view>
+      <text class="cuIcon-evaluate_fill lg icon {{isLike? 'active':''}} {{isCurUser? 'like_hidden':''}}" bindtap="like"></text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="content-header">
+      <view class="title" bindtap="switchTitle">
+        <text>TA的新任务</text>
+      </view>
+      <view class="tabContent">
+          <view class="taskList">
+            <task-card wx:for="{{taskList}}" bind:click="goTaskDetail" wx:key="index" task="{{item.task}}"></task-card>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+<van-dialog
+  id="van-dialog"
+  confirm-button-color="#f37b1d"
+  />

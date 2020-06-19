@@ -1,0 +1,68 @@
+.issue {
+  position: fixed;
+  right: 140rpx;
+  bottom: 150rpx;
+  color: red;
+  transition: all 0.3s;
+}
+
+.content {
+  margin-top: 30rpx;
+}
+
+.content .title {
+  padding: 20rpx 30rpx;
+  font-weight: bold;
+  color: #25c6fc;
+  box-shadow: inset -1px -1px 4px #e0e0e0;
+}
+
+.tower-swiper .tower-item {
+  transform: scale(calc(0.5 + var(--index) / 10));
+  margin-left: calc(var(--left) * 100rpx - 150rpx);
+  z-index: var(--index);
+}
+
+.rank {
+  position: relative;
+}
+
+.rank>view {
+  position: absolute;
+  z-index: 1;
+}
+
+.rank .swpier-avatar {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.rank .user {
+  position: absolute;
+  display: flex;
+  left: 16rpx;
+  bottom: 30rpx;
+  font-size: 30rpx;
+  z-index: 3;
+}
+
+.rank .user .name {
+  margin: auto;
+  margin-left: 26rpx;
+  font-size: 28rpx;
+}
+
+.rank .info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #00000060;
+  bottom: 0;
+  width: 100%;
+  font-size: 24rpx;
+  padding: 6rpx 20rpx;
+  padding-left: 102rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 4;
+}

@@ -1,0 +1,50 @@
+
+.taskCard{
+  padding: 30rpx;
+  font-size: 24rpx;
+  color: #f37b1d;
+}
+
+.taskCard text{
+  color: #eee;
+  font-weight: bold;
+}
+.taskCard .top{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+  justify-content: space-between;
+}
+.taskCard .top .title{
+  font-size: 36rpx;
+  color: #f37b1d;
+}
+.taskCard .top .createTime{
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  font-size: 24rpx;
+}
+.taskCard .center{
+  display: flex;
+  position: relative;
+  padding: 20rpx 20rpx 30rpx 20rpx;
+  border-bottom: 2rpx solid #00000010;
+}
+.taskCard .center .options view{
+  padding: 0 0 30rpx 10rpx;
+  
+}
+.taskCard .center .content{
+  margin-left: 20rpx;
+}
+
+.reward{
+  position: absolute;
+  right: 30rpx;
+  bottom: 15rpx;
+}
+.reward{
+  color: red;
+}

@@ -1,0 +1,52 @@
+.content.text-content{
+  margin-top: 40rpx;
+
+}
+.cu-card.dynamic .menu-avatar{
+  border-bottom: 2px solid #f1f1f1;
+}
+.content.text-content .title{
+  font-size: 30rpx;
+font-weight: 900;
+color: var(--orange);
+padding: 0 30rpx;
+
+}
+.content.text-content .content{
+  padding-left: 30rpx;
+  margin-top: 16rpx;
+}
+.content.text-content .text-content{
+  min-height: 85rpx;
+}
+.cu-card.dynamic>.cu-item>.text-content{
+  margin-bottom: 0rpx;
+
+}
+.cu-card.dynamic .menu-avatar{
+  border-width: 0;
+}
+.cu-bar.search{
+  position: fixed;
+  top: 120rpx;
+  left: 0;
+  width: 100%;
+}
+.cu-bar .search-form{
+  background-color: #00000030;
+
+}
+.cu-bar .search-form input {
+  color: #fff;
+}
+page {
+  padding-top: 30px;
+}
+.cu-card.dynamic>.cu-item>.cu-list>.cu-item{
+  background-color: #00000030;
+}
+.cu-card.dynamic>.cu-item {
+  background-color: #00000030;
+color: #eee;
+box-shadow: 1px 1px 2px #ffffff20;
+}

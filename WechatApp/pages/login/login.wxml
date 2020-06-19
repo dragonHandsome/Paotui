@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse && !show}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="wx_login"> 微信登录 </button>
+    <button class="normal_login" bindtap="showLogin"> 账号密码登录 </button>
+  </view>
+</view>
+<canvas type="2d" id="myCanvas" style="width:100vw;height:100vh;"></canvas>
+<view class="form {{active?'active':''}} {{show?'show':''}}">
+  <view class="form-title">{{isLogin?"登录":"注册"}}</view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="form-container">
+
+      <view class="section">
+        <view class="section__title">{{isLogin?'用户名 邮箱':'用户名'}}: </view>
+        <input name="{{isLogin?'usernameOrEmail':'username'}}" />
+      </view>
+      <view class="section">
+        <view class="section__title">密码: </view>
+        <input type="password" name="password" />
+      </view>
+      <view class="section" wx:if="{{!isLogin}}">
+        <view class="section__title">邮箱: </view>
+        <input type="email" name="email" />
+      </view>
+    </view>
+    <view class="register">
+      <view class="section" bindtap="toggleLogin">
+        <text class="{{isLogin?'cuIcon-friendadd':'cuIcon-friend'}} lg text-white"></text> {{isLogin?'注册':'登录'}}~
+      </view>
+      <button form-type="submit">
+        <text class="cuIcon-right" />
+        <text class="cuIcon-right" />提交</button>
+    </view>
+  </form>
+</view>

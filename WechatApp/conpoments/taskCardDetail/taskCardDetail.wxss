@@ -1,0 +1,196 @@
+.taskCard{
+  position: relative;
+  padding: 20rpx;
+  font-size: 24rpx;
+  box-shadow: 1px 1px 4px #00000020;
+}
+.taskCard>scroll-view{
+  height:88vh;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.taskCard .top{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+  justify-content: space-between;
+}
+.taskCard .top .title{
+  font-size: 36rpx;
+  color: #f37b1d;
+}
+.taskCard .top .createTime{
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  font-size: 24rpx;
+}
+.taskCard .center{
+  display: flex;
+  position: relative;
+  padding: 20rpx 20rpx;
+}
+.taskCard .center .options view{
+  padding: 0 0 30rpx 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  max-width: 300rpx;
+}
+.taskCard .center .content{
+  margin-left: 20rpx;
+}
+
+.reward{
+  position: absolute;
+  right: 30rpx;
+  bottom: 10rpx;
+  padding: 10rpx;
+  background-color: #e0e0e050;
+  color: red;
+}
+.reward text{
+  font-weight: bold;
+  color: red!important;
+}
+.foot-options{
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 24rpx;
+  padding: 0 30rpx;
+}
+.foot-options .text{
+  min-width: 40vw;
+  max-width: 40vw;
+}
+.foot-options .images{
+  min-width: 100%;
+}
+.foot-options > view{
+  margin-bottom: 30rpx;
+}
+.foot-options .text{
+  display: flex;
+
+}
+.foot-options .info{
+  color: #f37b1d;
+  font-weight: bold;
+}
+
+.foot-options .text .value{
+  margin-left: 10rpx;
+}
+.images{
+  padding: 30rpx;
+}
+.images .info{
+  margin-bottom: 30rpx;
+  font-weight: bold;
+  color: #f37b1d;
+}
+.images .value .imgblock{
+  position: relative;
+  margin-bottom: 20rpx;
+}
+/* .images .value .imgblock::after{
+  position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow:0 0 40px 20px #ffffffff inset;
+} */
+.imgblock{
+  filter: brightness(90%);
+}
+.images .value .imgblock image{
+  width: 100%;
+}
+.button{
+  position: fixed;
+  bottom: 150rpx;
+  right: 0;
+  min-width: 40vw;
+  max-width: 80vw;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.button button{
+  flex:1;
+  max-width: 32vw;
+  border-radius: 0;
+}
+.button .normal{
+  flex:4;
+}
+.taskStatus{
+  padding: 30rpx;
+}
+.taskStatus .title{
+  color: #f37b1d;
+  font-weight: bold;
+}
+.taskStatus .font{
+  color: #f37b1d;
+}
+.bg-gradual-orange {
+  background-image: linear-gradient(to right top,#Ff9700, #Ed1c24);
+  color: #ffffff;
+}
+.bg-grey{
+  background-color: #8799a320;
+  color: #ffffff;
+}
+.bg-green{
+  background-color: #39b54a80;
+  color: #ffffff;
+}
+.taskCard{
+  color:#eee;
+}
+.replay{
+  position: fixed;
+  right: 0;
+  bottom: 250rpx;
+  z-index: 99;
+  border-radius: 0;
+  font-size: 30rpx;
+  background: #8799a320!important;
+  color: #ffffff;
+}
+.card-swiper swiper-item{
+  width: 100%!important;
+  left: 0;
+}
+.solids-top::after{
+    border-top: 8rpx solid #00000020;
+}
+.cu-item{
+  background-color: #00000005!important;
+}
+.cuIcon-messagefill{
+  font-size: 30rpx;
+}
+.cai_na{
+  position: absolute;
+  right: 20rpx;
+  top:0;
+  font-size: 16rpx!important;
+}
+.cu-list.menu-avatar>.cu-item .action{
+  width: auto;
+}
+.cai_na button{
+  padding: 8rpx 15rpx!important;
+}
+
+.buttonSubmit{
+  display: none;
+}
+.buttonSubmit.show{
+  display: flex;
+}

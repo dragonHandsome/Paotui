@@ -1,0 +1,44 @@
+page{
+  padding-bottom: 100rpx;
+}
+.main-content{
+  display: flex;
+}
+.main-content .main .content{
+  min-width: 370rpx;
+}
+.main-content .content{
+  padding-bottom: 40rpx;
+}
+.main-content.self{
+  flex-direction: row-reverse;
+}
+
+.cu-chat .cu-item>.main .content{
+  display: block;
+}
+.button{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  right: 0;
+  bottom: -48rpx;
+}
+.button button{
+  border-radius: 0%!important;
+}
+
+.button .toTaskDetail{
+  flex:6;
+}
+.button button{
+  flex: 2;
+}
+.cu-chat .cu-item .date.special{
+  bottom: -20rpx
+}
+.cu-chat .cu-item>.main {
+  max-width: 400rpx;
+}

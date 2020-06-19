@@ -1,0 +1,223 @@
+.header {
+  position: relative;
+  box-sizing: border-box;
+  max-height: 38vh;
+  min-height: 38vh;
+}
+
+.content {
+  /* background-color: #ffffff;
+  opacity: .8; */
+  box-sizing: border-box;
+}
+
+.image {
+  position: absolute;
+  left: 50rpx;
+  top: 50rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+
+/* .image image{
+  width: 100%;
+  height: 100%;
+} */
+.info .name {
+  position: absolute;
+  left: 200rpx;
+  top: 150rpx;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+  font-size: 30rpx;
+}
+
+.motto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 15rpx 40rpx;
+  color: #fff;
+  width: 100%;
+  /* background-color: #f37b1d99; */
+}
+
+.motto .icon {
+  font-size: 50rpx;
+}
+
+.container {
+  position: relative;
+}
+
+.header .backgroundImage {
+  position: fixed;
+  top: -10vh;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  z-index: -1;
+  filter: brightness(70%) blur(10px)
+}
+
+.header .info {
+  position: relative;
+  margin: 30rpx 0;
+  background-color: #00000040;
+  opacity: 0.8;
+}
+
+.header .motto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: 4rpx solid #00000010;
+}
+
+.header .nickName {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-items: center;
+  height: 5rem;
+  color: #fff;
+}
+
+.header .setting {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 60rpx;
+}
+
+.tabs .content {
+  margin-top: 10rpx;
+}
+
+.content-header {
+  padding-bottom: 160rpx;
+}
+
+.content .title {
+  padding: 20rpx 30rpx;
+  font-weight: bold;
+  color: #f37b1d;
+  border: 2px solid #00000010;
+}
+
+.nickName {
+  padding: 10rpx;
+}
+
+.taskDetail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.tabs .van-tabs__scroll {
+  background-color: #00000000;
+
+}
+
+.tabs .van-tab {
+  color: #eeeeee;
+}
+
+.tabs .van-tabs__scroll .van-tab--active {
+  color: #f37b1d;
+}
+
+
+.tabContent {
+  transition: all .3s;
+  height: 0;
+  overflow: hidden;
+}
+
+.tabContent.active {
+  height: 70vh;
+}
+
+scroll-view {
+  height: 70vh;
+}
+
+.content .title {
+  position: relative;
+}
+
+.content .title::after,
+.content .title::before {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  content: "—";
+  font-weight: 900;
+  font-size: 36rpx;
+  transform-origin: 0 50%;
+  transition: all 0.3s;
+}
+
+.content .title::before {
+  top: 22rpx;
+  right: 32rpx;
+  font-size: 30rpx;
+  transform: rotate(-15deg);
+}
+
+.content .title.active::before {
+  transform: rotate(-60deg);
+}
+
+@keyframes downAnimate {
+  0% {
+    top: -70rpx;
+    color: #fff;
+  }
+
+  50% {
+    top: -40rpx;
+    color: #f37b1d;
+  }
+
+  100% {
+    top: -70rpx;
+    color: #fff;
+  }
+}
+
+.downLoad {
+  position: absolute;
+  right: 42rpx;
+  top: -50rpx;
+  font-size: 42rpx;
+  animation: downAnimate infinite 2s;
+}
+
+.exit {
+  position: absolute;
+  right: 42rpx;
+  top: -130rpx;
+  font-size: 42rpx;
+}
+
+.taskList {
+  width: 710rpx;
+  margin-left: 40rpx;
+  padding-left: 10rpx;
+}
+
+
+.taskList .taskList-item {
+  background-color: #00000010;
+}
+
+.taskList .taskList-item-1 {
+  background-color: #ffffff10;
+}

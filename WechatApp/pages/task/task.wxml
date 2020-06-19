@@ -1,0 +1,60 @@
+<view class="cu-custom">
+<cu-custom sBack="{{true}}" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">任务列表</view>
+</cu-custom>
+</view>
+<back url="{{backUrl}}"/>
+<wxs module="dateFr" src="../../utils/filter.wxs" />
+<view class="cu-bar search" style="background: #00000040">
+  <view class="search-form round">
+    <text class="cuIcon-search text-grey"></text>
+    <input type="text" value="{{reqOpt.title}}" bindfocus="handleFocus" bindinput="handleInput" placeholder="搜索标题（最多10字）" placeholder-style="color:#ccc" confirm-type="search"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn shadow-blur round" bindtap="handleSearch" style="background-color:#000000; color:#fff">搜索</button>
+  </view>
+</view>
+<view class="taskList">
+  <view class="cu-bar solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> {{category.info}}
+    </view>
+  </view>
+  <block wx:for="{{taskList}}" wx:key="index">
+    <view class="cu-card dynamic {{isCard?'no-card':''}}" >
+      <view class="cu-item shadow" bindtap="toTa" data-id="{{item.fromUser.id}}">
+        <view class="cu-list menu-avatar">
+          <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url({{(item.userDetail.avatar ? root + item.userDetail.avatar : '') || item.fromUser.avatarUrl || avatarUrl}});"></view>
+            <view class="content flex-sub">
+              <view>{{item.fromUser.nickName || item.fromUser.username}}</view>
+              <view class=" text-sm flex justify-between">
+                {{item.task.createTime}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="content text-content" bindtap="toTaskDetail" data-index="{{index}}">
+          <view class="cu-item shadow">
+            <view class="title">
+              <view class="text-cut">{{item.task.title}}</view>
+            </view>
+            <view class="content">
+                <view class="text-content"><text class="">内容:</text>{{item.task.content || ''}}</view>
+                <view>
+                  <view class="cu-tag bg-green light sm round">{{category.name}}</view>
+                  <view class="cu-tag bg-red light sm round">报酬:{{item.task.rewardMoney}}</view>
+                </view>
+            </view>
+          </view>
+        </view>
+        <view class=" text-sm text-right padding">
+          <!-- <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.watchCount}}
+          <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{item.favorCount}}
+          <text class="cuIcon-messagefill margin-lr-xs"></text> {{item.msgCount}} -->
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,45 @@
+<view class="cu-custom">
+  <cu-custom>
+    <view slot="content">跑腿</view>
+  </cu-custom>
+</view>
+<wxs module="filter" src="../../utils/filter.wxs" />
+<back url="{{backUrl}}" />
+<view class="container">
+  <view class="swiper">
+    <view class="cu-bar ">
+      <view class="action">
+        <text class="cuIcon-title text-pink"></text> 日活跃榜单TOP7
+      </view>
+    </view>
+    <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" >
+      <swiper-item wx:for="{{rankList}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
+      <view class="swiper-item rank">
+        <image src="{{root + item.background}}" mode="aspectFill" ></image>
+        <navigator class="user"url="/pages/ta/ta?id={{item.userId}}" >
+          <navigator></navigator>
+          <view class="swiper-avatar cu-avatar round  shadow-blur margin-top bg-img" style="background-image:url({{filter.avatarDeal(item.avatar,root)}});"></view>
+  
+          <view class="name">{{item.name}}</view>
+        </navigator>
+        <view class="info">
+          <view class="motto text-grey"><text class="text-grey"></text>{{item.motto}}</view>
+          <view class="hot"><text class="cuIcon-hot text-red"/> {{item.hot}}</view>
+        </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="cu-bar solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 任务广场
+    </view>
+  </view>
+  <view class="cu-list grid col-2 no-border}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key="index" bindtap="goTask" data-id="{{item.id}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>

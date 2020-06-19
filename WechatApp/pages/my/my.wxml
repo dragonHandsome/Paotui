@@ -1,0 +1,69 @@
+<back url="{{backUrl}}" />
+<view class="container">
+  <view class="header">
+    <view class="info">
+      <view class="image shadow-blur bg-img" style="background-image:url({{avatarS ||(userDetail.avatar ?root + userDetail.avatar : '') || user.avatarUrl || 'http://null'}})">
+      </view>
+      <view class="name">{{user.nickName || user.username}}</view>
+    </view>
+    <view class="motto">
+      <view class="exit" bindtap="exit"><text class="cuIcon-exit lg"></text></view>
+      <view class="downLoad" bindtap="downLoad"><text class="cuIcon-down lg"></text></view>
+      <view>
+        <text class="text-orange">个签: </text>{{userDetail.motto || "用户还未签名~"}}</view>
+      <text class="cuIcon-settingsfill lg icon" bindtap="entrySetting"></text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="content-header">
+      <view class="title {{titleActive?'active':''}}" bindtap="switchTitle">
+        <text>接的任务</text>
+      </view>
+      <view class="tabContent {{titleActive?'active':''}}">
+        <scroll-view scroll-y bindscrolltolower="nextPage2">
+          <view class="tabs">
+            <van-tabs active="{{ active2 }}" bind:change="getReceiveTask" color="#f37b1d" sticky>
+              <van-tab wx:for="{{receiveTaskStatus}}" wx:key="index" name="{{item.status}}" title="{{item.text}}" data-status="{{item.status}}">
+              </van-tab>
+            </van-tabs>
+          </view>
+          <view class="taskList">
+          <view class="taskList-item taskList-item-{{index % 2}}" wx:for="{{receiveTaskList}}" wx:key="index">
+            <task-card  bind:click="goTaskDetail" 
+            data-name = "receiveTaskList"
+             task="{{item.task}}"></task-card>
+          </view>
+          </view>
+          <view class="cu-load loading" hidden="{{!loading2}}"></view>
+        </scroll-view>
+      </view>
+      <view class="title {{titleActive?'':'active'}}" bindtap="switchTitle">
+        <text>发的任务</text>
+      </view>
+      <view class="tabContent {{titleActive?'':'active'}}">
+        <scroll-view scroll-y bindscrolltolower="nextPage">
+          <view class="tabs">
+            <van-tabs active="{{ active }}" bind:change="getTask" color="#f37b1d" sticky>
+              <van-tab wx:for="{{taskStatus}}" wx:key="index" name="{{item.status}}" title="{{item.text}}" data-status="{{item.status}}">
+              </van-tab>
+            </van-tabs>
+          </view>
+          <view class="taskList">
+            <view class="taskList-item taskList-item-{{index % 2}}"  wx:for="{{taskList}}"  wx:key="index">
+            
+            <task-card
+            data-name = "taskList"
+             bind:click="goTaskDetail" task="{{item.task}}"></task-card>
+            </view>
+          </view>
+          <view class="cu-load loading" hidden="{!loading1}}"></view>
+        </scroll-view>
+      </view>
+
+    </view>
+  </view>
+</view>
+<van-dialog
+  id="van-dialog"
+  confirm-button-color="#f37b1d"
+  />
