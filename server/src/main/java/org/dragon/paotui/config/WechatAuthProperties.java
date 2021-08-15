@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 @Getter
 /**
  * wechat:
- *   appid: wx6084428066b6d098
- *   secret: 63b1eee6db22c240baa62323b13d7db9
  *   jsCode: _JSCODE
  *   url: https://api.weixin.qq.com/sns/jscode2session?appid=${wechat.appid}&secret=${wechat.secret}&js_code=${wechat.jsCode}&grant_type=authorization_code
  */
